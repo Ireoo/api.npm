@@ -3,11 +3,6 @@
  */
 var needle = require('needle');
 
-needle.defaults({
-    open_timeout: 60 * 1000,
-    user_agent: 'iApi.npm'
-});
-
 module.exports = {
     config: {
         url: "http://api.daoapp.io/",
@@ -16,8 +11,14 @@ module.exports = {
 
     api: function(url, data, callback) {
         try {
+            var data_txt = JSON.stringify(data);
             data.key = this.config.key;
-            needle.post(this.config.url + url, JSON.stringify(data), function(err, res) {
+            needle.defaults({
+                open_timeout: 60 * 1000,
+                user_agent: 'iApi.npm',
+                content_length: data_txt.length
+            });
+            needle.post(this.config.url + url, data_txt, function(err, res) {
                 if (!err) {
                     try {
                         // var json = JSON.parse(res.body);
