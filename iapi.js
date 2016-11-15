@@ -17,8 +17,8 @@ exports.api = function(data, callback) {
         needle.post("http://api.daoapp.io/" + table + "/" + mode, JSON.stringify(data), function(err, res) {
             if (!err) {
                 try {
-                    var json = JSON.parse(res.body);
-                    callback(null, json);
+                    // var json = JSON.parse(res.body);
+                    callback(null, res.body);
                 } catch (e) {
                     callback(e, null);
                 }
