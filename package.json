@@ -2,6 +2,8 @@
   "name": "iapi",
   "version": "0.0.1",
   "main": "iapi.js",
+  "repository": "https://github.com/Ireoo/api.npm.git",
+  "license": "MIT",
   "dependencies": {
     "needle"   : "*"
   }
