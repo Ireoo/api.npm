@@ -1,6 +1,6 @@
 {
   "name": "iapi",
-  "version": "0.0.2",
+  "version": "0.0.3",
   "main": "iapi.js",
   "repository": "https://github.com/Ireoo/api.npm.git",
   "license": "MIT",
