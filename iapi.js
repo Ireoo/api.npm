@@ -16,12 +16,8 @@ module.exports = {
 
     api: function(url, data, callback) {
         try {
-            var data_txt = JSON.stringify(data);
             data.key = this.config.key;
-            options = {
-                "Content-Length": data_txt.length
-            };
-            needle.post(this.config.url + url, data_txt, options, function(err, res) {
+            needle.post(this.config.url + url, JSON.stringify(data), function(err, res) {
                 if (!err) {
                     try {
                         // var json = JSON.parse(res.body);
