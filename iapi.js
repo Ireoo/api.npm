@@ -9,9 +9,12 @@ needle.defaults({
 });
 
 exports.api = function(data, callback) {
-    if (!data || data == [] || typeof data != object) callback("data or json!!!", null);
     try {
-        needle.post("http://api.daoapp.io", JSON.stringify(data), function(err, res) {
+        var table = data.table;
+        var mode = data.mode;
+        delete data.table;
+        delete data.mode;
+        needle.post("http://api.daoapp.io/" + table + "/" + mode, JSON.stringify(data), function(err, res) {
             if (!err) {
                 try {
                     var json = JSON.parse(res.body);
