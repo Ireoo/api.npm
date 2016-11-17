@@ -21,9 +21,15 @@ var config_default = {
 
 exports = module.exports = {
     config: {},
+    DB: {
+        other: {
+            upsert: true
+        }
+    },
 
     api: function(url, data, callback) {
         this.config = _.defaults(this.config || {}, config_default);
+        data = _.defaults(data || {}, this.DB);
         try {
             data.key = this.config.key;
             needle.post(this.config.url + url, JSON.stringify(data), function(err, res) {
