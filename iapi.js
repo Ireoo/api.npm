@@ -1,13 +1,7 @@
 /**
  * Created by ireoo on 16-11-15.
  */
-var needle = require('needle'),
-    _ = {
-        extend: require('lodash.assignin'),
-        bind: require('lodash.bind'),
-        forEach: require('lodash.foreach'),
-        defaults: require('lodash.defaults')
-    };
+var needle = require('needle');
 
 needle.defaults({
     open_timeout: 60 * 1000,
@@ -28,11 +22,10 @@ exports = module.exports = {
     },
 
     api: function(url, data, callback) {
-        this.config = _.defaults(this.config || {}, config_default);
-        data = _.defaults(data || {}, this.DB);
+        data = data || exports.DB;
         try {
-            data.key = this.config.key;
-            needle.post(this.config.url + url, JSON.stringify(data), function(err, res) {
+            data.key = exports.config.key;
+            needle.post(exports.config.url + url, JSON.stringify(data), function(err, res) {
                 if (!err) {
                     try {
                         // var json = JSON.parse(res.body);
